@@ -11,30 +11,30 @@ import Realm
 import RealmSwift
 import ObjectMapper
 
-class BaseModel: Object, Mappable {
+open class BaseModel: Object, Mappable {
     dynamic var id = ""
     
-    override class func primaryKey() -> String? {
+    override open class func primaryKey() -> String? {
         return "id"
     }
     
-    required init?(map: Map) {
+    required public init?(map: Map) {
         super.init()
     }
     
-    required init() {
+    required public init() {
         super.init()
     }
     
-    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+    required public init(realm: RLMRealm, schema: RLMObjectSchema) {
         super.init(realm: realm, schema: schema)
     }
     
-    required init(value: Any, schema: RLMSchema) {
+    required public init(value: Any, schema: RLMSchema) {
         super.init(value: value, schema: schema)
     }
     
-    func mapping(map: Map) {
+    open func mapping(map: Map) {
         id = UUID().uuidString
     }
     

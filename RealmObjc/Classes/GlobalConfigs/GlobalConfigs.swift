@@ -8,4 +8,4 @@
 
 import Foundation
 
-let ReamlObject = DatabaseManager.shareInstance
+public let ReamlObject = DatabaseManager.shareInstance
