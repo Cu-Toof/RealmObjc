@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RealmObjc_Example' do
+  pod 'RealmObjc', :path => '../'
+
+  target 'RealmObjc_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
