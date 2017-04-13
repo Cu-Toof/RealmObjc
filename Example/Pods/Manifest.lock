@@ -1,0 +1,16 @@
+PODS:
+  - RealmObjc (0.1.0)
+
+DEPENDENCIES:
+  - RealmObjc (from `../`)
+
+EXTERNAL SOURCES:
+  RealmObjc:
+    :path: ../
+
+SPEC CHECKSUMS:
+  RealmObjc: 5a4dc55cc430840880f0dd914482d1f9de1c269c
+
+PODFILE CHECKSUM: e02830aa380c539a76fde35f32791d6e474f6421
+
+COCOAPODS: 1.2.0

@@ -1,0 +1,22 @@
+{
+  "name": "RealmObjc",
+  "version": "0.1.0",
+  "summary": "A short description of RealmObjc.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/toanf9dn@gmail.com/RealmObjc",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "toanf9dn@gmail.com": "toanf9dn@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/toanf9dn@gmail.com/RealmObjc.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RealmObjc/Classes/**/*"
+}

@@ -1,0 +1,6 @@
+framework module Pods_RealmObjc_Tests {
+  umbrella header "Pods-RealmObjc_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
