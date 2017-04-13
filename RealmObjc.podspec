@@ -36,7 +36,7 @@ RealmObjc which help you to query faster in Realm... bla bla
   #   'RealmObjc' => ['RealmObjc/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  # s.public_header_files = 'Pod/Classes/**/*.swift'
   s.frameworks = 'Foundation'
   s.dependency 'RealmSwift', '~> 2.2'
   s.dependency 'ObjectMapper', '~> 2.2'
