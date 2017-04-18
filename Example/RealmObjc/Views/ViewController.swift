@@ -14,8 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.createObject()
+//        self.createObject()
         print("\(ReamlObject.fetchObject(Employ.self)?.jobs.first?.position)")
+        print("\(ReamlObject.)")
     }
     
     func createObject() {
