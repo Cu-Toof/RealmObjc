@@ -11,17 +11,22 @@ import RealmSwift
 import ObjectMapper
 import RealmObjc
 
-class Employ: BaseModel {
+class Employ: Object, Mappable {
+    dynamic var id = ""
     dynamic var name: String = ""
     dynamic var age: Int = 0
     var jobs = LinkingObjects(fromType: Job.self, property: "emploies")
     
-    required convenience init?(map: Map) {
+    override open class func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience required init?(map: Map) {
         self.init()
     }
     
-    override func mapping(map: Map) {
-        super.mapping(map: map)
+    func mapping(map: Map) {
+        id = UUID().uuidString
         name    <- map["name"]
         age     <- map["age"]
     }

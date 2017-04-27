@@ -11,16 +11,21 @@ import RealmSwift
 import ObjectMapper
 import RealmObjc
 
-class Job: BaseModel {
+class Job: Object, Mappable {
+    dynamic var id = ""
     dynamic var position: String = ""
     let emploies: List<Employ> = List<Employ>()
+    
+    override open class func primaryKey() -> String? {
+        return "id"
+    }
     
     convenience required init?(map: Map) {
         self.init()
     }
     
-    override func mapping(map: Map) {
-        super.mapping(map: map)
+    func mapping(map: Map) {
+        id = UUID().uuidString
         position    <- map["position"]
     }
 }

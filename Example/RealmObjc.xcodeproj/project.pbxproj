@@ -11,7 +11,6 @@
 		54978DC91E9FBD590018B0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54978DBA1E9FBD590018B0BE /* AppDelegate.swift */; };
 		54978DCA1E9FBD590018B0BE /* Employ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54978DBC1E9FBD590018B0BE /* Employ.swift */; };
 		54978DCB1E9FBD590018B0BE /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54978DBD1E9FBD590018B0BE /* Job.swift */; };
-		54978DCC1E9FBD590018B0BE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54978DBF1E9FBD590018B0BE /* Info.plist */; };
 		54978DCD1E9FBD590018B0BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54978DC11E9FBD590018B0BE /* Images.xcassets */; };
 		54978DCE1E9FBD590018B0BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54978DC31E9FBD590018B0BE /* LaunchScreen.xib */; };
 		54978DCF1E9FBD590018B0BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54978DC51E9FBD590018B0BE /* Main.storyboard */; };
@@ -296,7 +295,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54978DCC1E9FBD590018B0BE /* Info.plist in Resources */,
 				54978DCE1E9FBD590018B0BE /* LaunchScreen.xib in Resources */,
 				54978DCD1E9FBD590018B0BE /* Images.xcassets in Resources */,
 				54978DCF1E9FBD590018B0BE /* Main.storyboard in Resources */,

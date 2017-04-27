@@ -13,10 +13,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        self.createObject()
-        print("\(ReamlObject.fetchObject(Employ.self)?.jobs.first?.position)")
-        print("\(ReamlObject.)")
+//        print("\(ReamlObject.fetchObject(Employ.self)?.jobs.first?.position)")
+//        print("\(ReamlObject)")
+        let objs = ReamlObject.fetchListObjects(Employ.self)
+        for obj in objs {
+            print("Employ is \(obj.name)")
+        }
     }
     
     func createObject() {

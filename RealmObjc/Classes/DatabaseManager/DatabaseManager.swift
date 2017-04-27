@@ -6,8 +6,9 @@
 //  Copyright © 2017 Toof_Appsia. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
+import Realm
 
 public final class DatabaseManager {
     
@@ -15,7 +16,7 @@ public final class DatabaseManager {
     
     //  MARK: fetch object
     
-    open func fetchObject<T: BaseModel>(_ type: T.Type) -> T? {
+    open func fetchObject<T: Object>(_ type: T.Type) -> T? {
         let results: Results<T> = realm.objects(type)
         if results.count > 0 {
             return results.first
@@ -23,7 +24,7 @@ public final class DatabaseManager {
         return nil
     }
     
-    open func fetchObject<T: BaseModel>(_ type: T.Type, filter predicate: NSPredicate) -> T? {
+    open func fetchObject<T: Object>(_ type: T.Type, filter predicate: NSPredicate) -> T? {
         let results: Results<T> = realm.objects(type).filter(predicate)
         if results.count > 0 {
             return results.first
@@ -31,18 +32,17 @@ public final class DatabaseManager {
         return nil
     }
     
-    //  MARK: fetch objects
+    //  MARK: fetch objects -> Result<T>
     
-    open func fetchObjects<T: BaseModel>(_ type: T.Type) -> Results<T> {
+    open func fetchObjects<T: Object>(_ type: T.Type) -> Results<T> {
         return realm.objects(type)
     }
     
-    
-    open func fetchObjects<T: BaseModel>(_ type: T.Type, filter predicate: NSPredicate) -> Results<T> {
+    open func fetchObjects<T: Object>(_ type: T.Type, filter predicate: NSPredicate) -> Results<T> {
         return realm.objects(type).filter(predicate)
     }
     
-    open func fetchObjects<T: BaseModel>(_ type: T.Type, sortBy propertiesSort: [String: Bool]?) -> Results<T> {
+    open func fetchObjects<T: Object>(_ type: T.Type, sortBy propertiesSort: [String: Bool]?) -> Results<T> {
         var results = realm.objects(type)
         for property in propertiesSort! {
             results = results.sorted(byKeyPath: property.0, ascending: property.1)
@@ -50,7 +50,7 @@ public final class DatabaseManager {
         return results
     }
     
-    open func fetchObjects<T: BaseModel>(_ type: T.Type, filter predicate: NSPredicate, sortBy propertiesSort: [String: Bool]?) -> Results<T> {
+    open func fetchObjects<T: Object>(_ type: T.Type, filter predicate: NSPredicate, sortBy propertiesSort: [String: Bool]?) -> Results<T> {
         var results = realm.objects(type).filter(predicate)
         for property in propertiesSort! {
             results = results.sorted(byKeyPath: property.0, ascending: property.1)
@@ -58,9 +58,49 @@ public final class DatabaseManager {
         return results
     }
     
+    //  MARK: fetch objects -> List<T>
+    
+    open func fetchListObjects<T: Object>(_ type: T.Type) -> List<T> {
+        let results = realm.objects(type)
+        return results.reduce(List<T>()) { (list, element) -> List<T> in
+            list.append(element)
+            return list
+        }
+    }
+    
+    open func fetchListObjects<T: Object>(_ type: T.Type, filter predicate: NSPredicate) -> List<T> {
+        let results = realm.objects(type).filter(predicate)
+        return results.reduce(List<T>()) { (list, element) -> List<T> in
+            list.append(element)
+            return list
+        }
+    }
+    
+    open func fetchListObjects<T: Object>(_ type: T.Type, sortBy propertiesSort: [String: Bool]?) -> List<T> {
+        var results = realm.objects(type)
+        for property in propertiesSort! {
+            results = results.sorted(byKeyPath: property.0, ascending: property.1)
+        }
+        return results.reduce(List<T>()) { (list, element) -> List<T> in
+            list.append(element)
+            return list
+        }
+    }
+    
+    open func fetchListObjects<T: Object>(_ type: T.Type, filter predicate: NSPredicate, sortBy propertiesSort: [String: Bool]?) -> List<T> {
+        var results = realm.objects(type).filter(predicate)
+        for property in propertiesSort! {
+            results = results.sorted(byKeyPath: property.0, ascending: property.1)
+        }
+        return results.reduce(List<T>()) { (list, element) -> List<T> in
+            list.append(element)
+            return list
+        }
+    }
+    
     //  MARK: add object
     
-    open func addObject<T: BaseModel>(_ object: T) -> Void {
+    open func addObject<T: Object>(_ object: T) -> Void {
         realm.beginWrite()
         realm.add(object, update: true)
         realm.commitWriting()
@@ -76,18 +116,10 @@ public final class DatabaseManager {
     
     //  MARK: remove object
     
-    open func deleteObject<T: BaseModel>(_ object: T) -> Void {
+    open func deleteObject<T: Object>(_ object: T) -> Void {
         realm.beginWrite()
         realm.delete(object)
         realm.commitWriting()
-    }
-    
-    open func fetchBaseModel() -> BaseModel {
-        return realm.objects(BaseModel.self).first!
-    }
-    
-    open func realmPath() -> String {
-        return Realm.Configuration.defaultConfiguration.fileURL!.path
     }
     
 }
